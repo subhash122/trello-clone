@@ -1,0 +1,91 @@
+.card {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: RGB(0 0 0 / 9%) 0px 9px 12px, RGB(0 0 0 / 6%) 0px 6px 6px;
+    cursor: pointer;
+}
+
+.card-title {
+    flex: 1;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.875rem;
+}
+
+.card-description {
+    flex: 1;
+    font-size: 0.8rem;
+    line-height: 1.6=575rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer-item {
+    border-radius: 40px;
+    padding: 4px 12px;
+    background-color: #f8f8f8;
+    color: #000;
+    width: fit-content;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.card-footer-icon {
+    height: 13px;
+    width: 13px;
+}
+
+.cardinfo {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 550px;
+    width: fit-content;
+    max-width: 650px;
+    height: fit-content;
+}
+
+.cardinfo-box {
+    width: 100%;
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+
+.cardinfo-box-title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.cardinfo-box-title h5 {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0px;
+}
+
+.custom-input-display {
+    padding: 6px 12px;
+    border-radius: 3px;
+    background-color: #eee;
+    color: #000;
+    width: fit-content;
+    transition: 200ms;
+}
