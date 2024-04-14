@@ -8,11 +8,14 @@ function Board({ board, onDragEnd, onDragEnter, addCard, }) {
   const [showModal, setShowModal] = useState(false);
   const handleCancel = () => {
     setShowModal(false);
+    form.resetFields();
   };
   const onSubmit = (values) => {
     addCard(board.id, values)
-    setShowModal(false)
+    setShowModal(false);
+    form.resetFields();
   }
+  
   return (
     <>
       {showModal && <Modal title="Create Task" open={showModal} onCancel={handleCancel} footer={null}>
@@ -37,6 +40,13 @@ function Board({ board, onDragEnd, onDragEnter, addCard, }) {
             style={{ marginBottom: 15 }}
           >
             <Input name="description" type='description' />
+          </Form.Item>
+          <Form.Item
+            label="Date"
+            name="date"
+            style={{ marginBottom: 15 }}
+          >
+            <Input name="date" type='date'  min={new Date().toISOString().substr(0, 10)}/>
           </Form.Item>
           <Form.Item>
             <Button className='w-full' type="primary" htmlType="submit" id="login-submit">

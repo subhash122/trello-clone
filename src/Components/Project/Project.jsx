@@ -29,7 +29,7 @@ function Project() {
         tempBoard[boardIndex].cards.push({
             id: Date.now() + Math.random() * 10,
             title: values.title,
-            date: "",
+            date: values.date,
             desc: values.description,
         });
         setBoards(tempBoard);
