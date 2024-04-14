@@ -22,7 +22,11 @@ function Project() {
         setProjectData({ ...data })
     }, []);
 
-    // adds the newly created task to appropiate board using boardId
+    /**
+     * adds the newly created task to appropiate board using boardId
+     * @param {*} boardId  baord id where task has to be added
+     * @param {*} values  values for the new task
+     */
     const addCardHandler = (boardId, values) => {
         const boardIndex = boards.findIndex((item) => item.id === boardId);
         const tempBoard = [...boards];
@@ -35,9 +39,12 @@ function Project() {
         setBoards(tempBoard);
         toast.success("task added successfully");
     }
-
+    /**
+     * called when task is dropped in a board
+     * @param {*} boardId  baord id from where task has been picked up
+     * @param {*} cardId   id of the picked task
+     */
     const onDragEnd = (boardId, cardId) => {
-        // console.log(boardId, cardId)
         const sourceBoardIndex = boards.findIndex((item) => item.id === boardId);
         if (sourceBoardIndex < 0)
             return;
@@ -64,13 +71,27 @@ function Project() {
     }
 
     const onDragEnter = (boardId, cardId) => {
-        
         if (targetCard.cardId === cardId)
             return;
         setTargetCard({
             boardId: boardId,
             cardId: cardId,
         });
+    }
+
+
+    /**
+     * method deletes the task from particular board
+     * @param {*} boardId  baord id where task has to be deleted
+     * @param {*} cardId  id of the task which has to be deleted
+     */
+    const deleteCardHandler = (boardId, cardId) => {
+        const boardIndex = boards.findIndex((item) => item.id === boardId);
+        const tempBoardsList = [...boards];
+        const cards = tempBoardsList[boardIndex].cards;
+        const cardIndex = cards.findIndex((item) => item.id === cardId);
+        cards.splice(cardIndex, 1);
+        setBoards(tempBoardsList);
     }
     return (
         <>
@@ -91,7 +112,7 @@ function Project() {
                                 key={item.id}
                                 board={item}
                                 addCard={addCardHandler}
-                               
+                                deleteCard={deleteCardHandler}
                                 onDragEnd={onDragEnd}
                                 onDragEnter={onDragEnter}
                             />

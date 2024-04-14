@@ -3,7 +3,7 @@ import './Board.css';
 import Card from '../Card/Card';
 import { Button, Form, Input, Modal } from 'antd';
 
-function Board({ board, onDragEnd, onDragEnter, addCard, }) {
+function Board({ board, onDragEnd, onDragEnter, addCard, deleteCard}) {
   const [form] = Form.useForm();
   const [showModal, setShowModal] = useState(false);
   const handleCancel = () => {
@@ -72,7 +72,7 @@ function Board({ board, onDragEnd, onDragEnter, addCard, }) {
                 key={item.id}
                 card={item}
                 boardId={board.id}
-
+                deleteCard={deleteCard}
                 onDragEnter={onDragEnter}
                 onDragEnd={onDragEnd}
 

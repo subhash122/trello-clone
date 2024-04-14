@@ -2,14 +2,32 @@ import React, { useState } from 'react'
 import './Card.css'
 import { CalendarOutlined, ClockCircleFilled, DashOutlined, FontSizeOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { formatDate, trimDesc } from "../../Helper/Util";
-import { Dropdown, Modal } from 'antd';
+import { Dropdown, Menu, Modal } from 'antd';
 
-function Card({ card, boardId, onDragEnd, onDragEnter }) {
+function Card({ card, boardId, onDragEnd, onDragEnter,deleteCard }) {
     const { id, title, desc, date } = card;
     const [showModal, setShowModal] = useState(false);
     const handleCancel = () => {
         setShowModal(false);
     };
+
+    const deleteHandler=(e,boardId,cardId)=>{
+        e.stopPropagation();
+        deleteCard(boardId,cardId);
+    }
+
+    const items = [
+        {
+            label: <Menu >
+                <Menu.Item key="0">
+                    <div type="button" onClick={(e)=>deleteHandler(e,boardId,id)}>
+                        Delete task
+                    </div>
+                </Menu.Item>
+            </Menu>,
+            key: '0',
+        },
+    ]
 
     return (
         <>
@@ -54,6 +72,16 @@ function Card({ card, boardId, onDragEnd, onDragEnter }) {
             >
                 <div className="card-top">
                     <div className="card-title">{title}</div>
+                    <Dropdown
+                        menu={{
+                            items,
+                        }}
+                        trigger={['click']}
+                        onClick={(e)=>e.stopPropagation()}
+                    ><div className="cursor-pointer ml-5 me-4">
+                            <DashOutlined style={{ fontSize: '1.5rem' }} />
+                        </div>
+                    </Dropdown>
                 </div>
 
 

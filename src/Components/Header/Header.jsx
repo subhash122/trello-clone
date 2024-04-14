@@ -8,7 +8,7 @@ function Header() {
     
     const logout = () => {
         localStorage.clear();
-        window.location.reload()
+        window.open("/", "_self");
     }
     const items = [
         {
